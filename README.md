@@ -4,8 +4,19 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Scikit-Learn](https://img.shields.io/badge/scikit--learn-1.3+-orange.svg)](https://scikit-learn.org/)
 [![XGBoost](https://img.shields.io/badge/XGBoost-2.0+-green.svg)](https://xgboost.readthedocs.io/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-App%20Live-FF4B4B.svg)](http://localhost:8501)
 
 **SugarSense** is a Supervised Machine Learning early diabetes screening system designed for community health workers and NGO mobile clinics in resource-constrained environments. By leveraging 8 low-cost clinical measurements, SugarSense identifies high-risk individuals and recommends follow-up laboratory testing, prioritizing high **Recall** to minimize dangerous missed diagnoses.
+
+---
+
+## 📱 Web Application Preview
+
+### 1. Interactive Patient Screener & Real-Time Indicator Cards
+![SugarSense Streamlit Interface](streamlit_app_preview1.png)
+
+### 2. Machine Learning Triage Prediction & Clinical Directives
+![SugarSense Risk Assessment & Triage](streamlit_app_preview2.png)
 
 ---
 
@@ -37,21 +48,24 @@ Missed detection leads to irreversible macro- and micro-vascular complications (
 ```
 SugarSense/
 │
-├── diabetes_screening_data.csv   # Dataset file
-├── SugarSense.ipynb              # Complete executed Jupyter Notebook (Phases 1-10)
-├── screen_patient.py             # Python screening module & CLI demo tool
-├── sugarsense_model.joblib       # Saved champion pipeline model artifact
-├── SUMMARY_REPORT.md             # 1-Page Executive Summary Report
-├── README.md                     # Repository documentation & Git commit history
+├── app.py                     # Streamlit Web Application (Modern Custom UI)
+├── diabetes_screening_data.csv# Dataset file
+├── SugarSense.ipynb        # Complete executed Jupyter Notebook (Phases 1-10)
+├── screen_patient.py          # Python screening module & CLI demo tool
+├── sugarsense_model.joblib    # Saved champion pipeline model artifact
+├── SUMMARY_REPORT.md          # 1-Page Executive Summary Report
+├── README.md                  # Repository documentation & Git commit history
 │
-├── missing_values.png            # Missing data audit chart
-├── correlation_heatmap.png       # Correlation matrix visualization
-├── model_comparison.png          # 5-fold CV baseline model comparison chart
-├── roc_pr_curves.png             # Test set ROC & Precision-Recall curves
-├── confusion_matrix_default.png  # Confusion matrix at 0.5 threshold
-├── confusion_matrix_tuned.png    # Confusion matrix at tuned medical threshold (0.365)
-├── feature_importance.png        # Permutation feature importance plot
-└── learning_curve.png            # Model learning curve plot
+├── streamlit_app_preview1.png # Streamlit UI Screenshot 1
+├── streamlit_app_preview2.png # Streamlit UI Screenshot 2
+├── missing_values.png         # Missing data audit chart
+├── correlation_heatmap.png    # Correlation matrix visualization
+├── model_comparison.png       # 5-fold CV baseline model comparison chart
+├── roc_pr_curves.png          # Test set ROC & Precision-Recall curves
+├── confusion_matrix_default.png# Confusion matrix at 0.5 threshold
+├── confusion_matrix_tuned.png # Confusion matrix at tuned medical threshold (0.365)
+├── feature_importance.png     # Permutation feature importance plot
+└── learning_curve.png         # Model learning curve plot
 ```
 
 ---
@@ -61,22 +75,22 @@ SugarSense/
 ### 1. Environment Setup
 Clone the repository and install required dependencies:
 ```bash
-git clone https://github.com/your-org/SugarSense.git
-cd SugarSense
-pip install -r requirements.txt
+git clone https://github.com/sairam0512/sugarsense.git
+cd sugarsense
+pip install pandas numpy scikit-learn xgboost matplotlib seaborn joblib streamlit
 ```
-*Required packages*: `pandas`, `numpy`, `scikit-learn`, `xgboost`, `matplotlib`, `seaborn`, `joblib`.
 
-### 2. Run the Jupyter Notebook
+### 2. Launch the Streamlit Web Application
+Launch the interactive medical dashboard in your browser:
+```bash
+streamlit run app.py
+```
+Open **[http://localhost:8501](http://localhost:8501)** in your web browser.
+
+### 3. Run the Jupyter Notebook
 Launch Jupyter Notebook to view full step-by-step code, plots, and markdown analyses:
 ```bash
 jupyter notebook SugarSense.ipynb
-```
-
-### 3. Test Patient Screening Module
-Run the standalone screening tool to evaluate individual patient records:
-```bash
-python screen_patient.py
 ```
 
 ---
@@ -104,7 +118,7 @@ By lowering the decision threshold from **0.500 to 0.365** based on out-of-fold 
 
 ---
 
-## 📜 Git Commit History Breakdown (6 Meaningful Commits)
+## 📜 Git Commit History Breakdown
 
 1. `commit 1`: `feat(data): initial commit of dataset and data audit phase (Phase 1)`
 2. `commit 2`: `feat(eda): add exploratory data analysis distribution plots and correlation heatmap (Phase 2)`
@@ -112,6 +126,8 @@ By lowering the decision threshold from **0.500 to 0.365** based on out-of-fold 
 4. `commit 4`: `feat(modeling): train and compare 6 classification algorithms with 5-fold CV (Phase 5)`
 5. `commit 5`: `feat(tuning): hyperparameter tuning and medical threshold optimization for Recall >= 85% (Phases 6-8)`
 6. `commit 6`: `docs(deliverables): add feature importance, bonus challenges, executive summary, and joblib screening app`
+7. `commit 7`: `style(ui): enhance app.py with original custom medical theme and real-time attribute indicator cards`
+8. `commit 8`: `docs(preview): add Streamlit UI screenshots to README`
 
 ---
 
